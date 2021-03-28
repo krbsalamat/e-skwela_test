@@ -1,0 +1,82 @@
+#header{
+    opacity: .8;
+}
+#navLogin{
+    background-color: blueviolet;
+    padding:0px;
+}
+
+#whyItWorks{
+    
+    background-color: rgb(224, 184, 219);
+    height: 800px;
+}
+
+#whyItWorks-1{
+    
+    height:400px;
+    
+}
+#whyItWorks-2{
+    
+    height:400px;
+}
+#whyItWorks-3{
+    
+    height:400px;
+}
+
+#educatorTab{
+    
+    height:600px;
+}
+#learnerTab{
+    
+    height:600px;
+}
+
+#site {
+    overflow:auto;
+    padding-bottom:150px; /* this needs to be bigger than footer height*/
+  }
+  .filler{
+      margin-bottom:300px;
+  }
+  
+  .footer {
+    position: relative;
+    margin-top: 60px; /* negative value of footer height */
+    clear:both;
+    padding-top:20px;
+  }
+
+
+#terms{
+    overflow-y: scroll;
+    height: 300px;
+    width: 100%;
+    border: 1px solid #DDD;
+    padding: 10px;   
+}
+
+#landingDiv{
+    height:700px;
+    border: 1px outset red;
+    
+}
+
+#landingHeader{
+    height:150px;
+    border: 1px outset black;
+    background-image: linear-gradient(violet, white, purple);
+}
+
+#profilePic{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    float: right;
+    margin-right: 10%;
+}
+
+  
