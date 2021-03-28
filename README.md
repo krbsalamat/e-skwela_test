@@ -1,1 +1,0 @@
-# e-skwela_test
