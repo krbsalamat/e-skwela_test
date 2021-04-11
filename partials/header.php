@@ -64,6 +64,34 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                     }
                 });
             });
+            //form submit for profile edit page
+            $(document).ready(function(){
+                $("#landingSubmit").click(function(e){
+                    e.preventDefault();
+                    var lpfname = $("#landingProfileFname").val().trim();
+                    var lplname = $("#landingProfileLname").val().trim();
+                    var lpusername = $("#landingUsername").val().trim();
+                    var lpemail = $("#landingEmail").val().trim();
+                    if(!$("#landingUsercheckdiv").hasClass('has-success')){
+                        console.log("chk username")
+                    }else{ 
+                        $.ajax({
+                            url:'<?php echo $eskwela_home; ?>/includes/update.php',
+                            type:'post',
+                            data:{a:lpfname,b:lplname,c:lpemail,d:lpusername},
+                            success:function(response){
+                                var msg = "success";
+                                $("#submission").html(msg);
+                                console.log(response);
+                            }
+                        });
+                    }
+                    
+                    
+                    
+                    
+                });
+            });
         </script>
     </head>
     <body class="site">

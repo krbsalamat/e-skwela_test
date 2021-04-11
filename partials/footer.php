@@ -254,6 +254,9 @@ $(document).ready(function(){
     $("#next-3").click(function(e){
         e.preventDefault();
         $("#passwordError").html('');
+        if(!$("#usercheckdiv").hasClass('has-success')){
+            return false;
+        }
         if($("#pwd").val()!= $("#pwd2").val()){
             $("#passwordError").html('Password mismatch');
             return false;
@@ -272,7 +275,19 @@ $(document).ready(function(){
         }else if($("#usercheckdiv").hasClass('has-success')){
             $("#usercheck").addClass("text-success");
         }
+        
     })
+    $("#landingHomeButton").click(function(e){
+        e.preventDefault();
+        $('#landingProfileDiv').removeClass("active");
+        $('#landingHomeDiv').addClass("active");
+    })
+    $("#landingProfileButton").click(function(e){
+        e.preventDefault();
+        $('#landingHomeDiv').removeClass("active");
+        $('#landingProfileDiv').addClass("active");
+    })
+    
 })  
 </script>
 <script>
@@ -299,6 +314,22 @@ $(document).ready(function(){
                 $("#usercheck").parent('div').removeClass('has-success text-success').addClass('has-error text-danger');
             }
             $("#usercheck").html(data.msg);
+        }, 'json');
+    });
+});
+
+$(document).ready(function(){
+    $("#landingUsername").keyup(function(){
+        var usercheck = $(this).val();
+        console.log(usercheck);
+        $("#landingUsercheck").html('<img src="includes/loading.gif" width="150 />');
+        $.post("../includes/check.php", {user_name:usercheck},function(data){
+            if(data.status == true){
+                $("#landingUsercheck").parent('div').removeClass('has-error text-danger').addClass('has-success text-success');
+            }else{
+                $("#landingUsercheck").parent('div').removeClass('has-success text-success').addClass('has-error text-danger');
+            }
+            $("#landingUsercheck").html(data.msg);
         }, 'json');
     });
 });
