@@ -279,14 +279,47 @@ $(document).ready(function(){
     })
     $("#landingHomeButton").click(function(e){
         e.preventDefault();
-        $('#landingProfileDiv').removeClass("active");
-        $('#landingHomeDiv').addClass("active");
+        $(".sel").removeClass("active");
+        $("#landingHomeDiv").addClass("active");
     })
     $("#landingProfileButton").click(function(e){
         e.preventDefault();
-        $('#landingHomeDiv').removeClass("active");
-        $('#landingProfileDiv').addClass("active");
+        $(".sel").removeClass("active");
+        $("#landingProfileDiv").addClass("active");
     })
+    $("#landingBookingsButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingBookingsDiv").addClass("active");
+    })
+    $("#landingHistoryButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingHistoryDiv").addClass("active");
+    })
+    $("#landingCoursesButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingCoursesDiv").addClass("active");
+    })
+    $("#landingPayoutButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingPayoutDiv").addClass("active");
+    })
+    $("#landingProgressButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingProgressDiv").addClass("active");
+    })
+    $("#landingUploadButton").click(function(e){
+        e.preventDefault();
+        $(".sel").removeClass("active");
+        $("#landingUploadDiv").addClass("active");
+    })
+    
+
+   
     
 })  
 </script>

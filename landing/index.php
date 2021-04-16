@@ -18,11 +18,13 @@ $logOutDir = ($in_landing_home == true)? '../includes/logout.php' : '../../inclu
 $table = array("students", "teachers");
 $torsu = array("s_username", "t_username");
 $torsp = array("s_password", "t_password");
+$torsx = array("s_", "t_");
 $torsv = array("","s_", "t_");
 $y = 0;
 $verify=0;
 for($x = 0; $x <= 1; $x++){
-	$sql = "SELECT * FROM " . $table[$x] . " WHERE " . $torsu[$x] . " ='" .$_SESSION['u_username']. "'";
+	$sql = "SELECT * FROM " . $table[$x] . " WHERE " . $torsx[$x].'id' . " ='" .$_SESSION['u_id']. "'";
+	
 	$res = mysqli_query($dbCon, $sql);
 	$count = mysqli_num_rows($res);
 	$y = $x;
@@ -84,65 +86,26 @@ if($_SESSION['u_typen']==1){
 		<div class="col-3">
 			<div class="wrapper">
 				<div class="sidenav nav nav-tabs">
-					<ul>
+					<ul class="">
 						<h3>Dashboard</h3>
 						<li><a class="nav-link" href="#landingHomeDiv" id="landingHomeButton">Home</a></li>
-						<li><a class="nav-link" href="#">Courses</a></li>
-						<li><a class="nav-link" href="#">Progress</a></li>
-						<li><a class="nav-link" href="#">Bookings</a></li>
+						<li><a class="nav-link" href="#landingCoursesDiv" id="landingCoursesButton">Courses</a></li>
+						<li><a class="nav-link" href="#landingProgressDiv" id="landingProgressButton">Progress</a></li>
+						<li><a class="nav-link" href="#landingBookingsDiv" id="landingBookingsButton">Bookings</a></li>
 						<h3>Account</h3>
 						<li><a class="nav-link" href="#landingProfileDiv" id="landingProfileButton">Profile</a></li>
-						<li><a class="nav-link" href="#">Upload Video</a></li>
+						<li><a class="nav-link" href="#landingUploadDiv" id="landingUploadButton">Upload Video</a></li>
 						<h3>Payment</h3>
-						<li><a class="nav-link" href="#">Payout</a></li>
-						<li><a class="nav-link" href="#">History</a></li>
+						<li><a class="nav-link" href="#landingPayoutDiv" id="landingPayoutButton">Payout</a></li>
+						<li><a class="nav-link" href="#landingHistoryDiv" id="landingHistoryButton">History</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="col-6" style="border:1px outset violet;">
 			<div class="tab-content">
-				<!-- MIDDLE CONTENT -->
-				<div class="tab-pane active" id="landingProfileDiv">
-					<form>
-					<h3>Edit profile</h3>
-					<div class="row">
-						
-						<div class="col-6">
-							<label for="landingProfileFname" class="form-label">First Name</label>
-							<input type="text" class="form-control" name="landingProfileFname" id="landingProfileFname" placeholder="<?php echo $row[$torsv[$utype].'firstname']; ?>">
-						</div>
-						<div class="col-6">
-							<label for="landingProfileLname" class="form-label">Last Name</label>
-							<input type="text" class="form-control" name="landingProfileLname" id="landingProfileLname" placeholder="<?php echo $row[$torsv[$utype].'lastname']; ?>">
-						</div>
-					</div>
-					<div class="row mt-2 pt-2">
-						<div class="col-6">
-							
-							<label for="landingUsername" class="form-label">Username</label> 
-							
-							<input type="text" class="form-control" id="landingUsername" name="landingUsername" placeholder="<?php echo $row[$torsv[$utype].'username']; ?>">
-						</div>
-						<div class="col-6">
-							<label for="landingEmail" class="form-label">Email</label>
-							<input type="email" class="form-control" name="landingEmail" id="landingEmail" placeholder="<?php echo $row[$torsv[$utype].'email']; ?>">
-						</div>
-					</div>
-					<div class="col-6" id="landingUsercheckdiv">
-						<span id="landingUsercheck" class="help-block"></span>
-					</div>
-					<button type="button" class="btn btn-primary mt-5" name="landingSubmit" id="landingSubmit">Change details</button>
-					<span id="submission" class="help-block text-success"></span>
-				</div>
-				
-				</form>
-				<div class="tab-pane" id="landingHomeDiv">
-					<h5>Home div</h5>
-				</div>
-				<div class="tab-pane" id="">
-					<h5>asdasdasd</h5>
-				</div>
+			<!-- add landing-*.php on whatever tab you're editing-->
+			<?php include "landing-home.php"; include "landing-edit.php"; include "landing-bookings.php"; include "landing-history.php"; include "landing-payout.php"; include "landing-progress.php"; include "landing-upload.php";include "landing-courses.php";?>
 			</div>
 		</div>
 		<div class="col-3" style="border:1px outset blue;">

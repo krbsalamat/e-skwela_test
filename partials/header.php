@@ -72,8 +72,15 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                     var lplname = $("#landingProfileLname").val().trim();
                     var lpusername = $("#landingUsername").val().trim();
                     var lpemail = $("#landingEmail").val().trim();
+
+                    
                     if(!$("#landingUsercheckdiv").hasClass('has-success')){
-                        console.log("chk username")
+                        console.log("chk username");
+                    }else if(!validatelandingEmail($("#landingEmail").val())){
+                        $("#submission").html("Check email address!");
+                        $("#submission").addClass("text-danger").removeClass("text-success");
+                        console.log("failemail");
+                        return false;
                     }else{ 
                         $.ajax({
                             url:'<?php echo $eskwela_home; ?>/includes/update.php',
@@ -82,14 +89,16 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                             success:function(response){
                                 var msg = "success";
                                 $("#submission").html(msg);
+                                $("#submission").addClass("text-success").removeClass("text-danger");
                                 console.log(response);
+                                location.reload();
                             }
                         });
                     }
-                    
-                    
-                    
-                    
+                    function validatelandingEmail($landingEmail){
+                    var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                    return emailReg.test($landingEmail);
+                    }
                 });
             });
         </script>
