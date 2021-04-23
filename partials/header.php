@@ -15,6 +15,7 @@ else $activeMenu = 'home';
 include(($activeMenu == 'home') ? 'config.php' : '../config.php');
 include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,14 +25,16 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
         <meta http-equiv="X-UA-Compatible"
         content="ie=edge"/>
         <Title>E-Skwela</Title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo $eskwela_home; ?>/custom.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>        
+                
         <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
+        
             $(document).ready(function(){
                 $("#submit").click(function(){
                     var username = $("#username").val().trim();
@@ -64,6 +67,7 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                     }
                 });
             });
+            
             //form submit for profile edit page
             $(document).ready(function(){
                 $("#landingSubmit").click(function(e){
@@ -76,6 +80,7 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                     
                     if(!$("#landingUsercheckdiv").hasClass('has-success')){
                         console.log("chk username");
+                        return false;
                     }else if(!validatelandingEmail($("#landingEmail").val())){
                         $("#submission").html("Check email address!");
                         $("#submission").addClass("text-danger").removeClass("text-success");
@@ -101,6 +106,7 @@ include(($activeMenu == 'home') ? 'db_connection.php' : '../db_connection.php');
                     }
                 });
             });
+            
         </script>
     </head>
     <body class="site">

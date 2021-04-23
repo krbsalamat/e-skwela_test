@@ -44,8 +44,6 @@ if($_SESSION['u_typen']==1){
 	$utype = 2;
 }
 ?> 
-
-
 <div class="container-fluid h-100" id="landingHeader">
 	<div class="row">
 		<div class="col-lg-3 col-sm-12 my-4" id="picture">
@@ -72,16 +70,31 @@ if($_SESSION['u_typen']==1){
 			</div>
 		</div>
 		<div class="col-lg-3 col-sm-12 mt-5">
-			<a class="btn btn-outline-dark ms-5" href="#!" role="button">
-				<i class="fa fa-bell"></i>
-			</a>
-			<a class="btn btn-outline-dark ms-3" href="#!" role="button">
-				<i class="fa fa-cogs"></i>
-			</a>
+			<div class="row">
+				<div class="float-start col-3">
+					<a class="btn btn-outline-dark ms-5" href="#!" role="button">
+						<i class="fa fa-bell"></i>
+					</a>
+				</div>
+				<div class="float-start col-3">
+					<div class="dropdown">
+						<button type="button" class="btn btn-outline-dark dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							<a><i class="fa fa-cogs"></i></a>
+						</button>
+						
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item" href="#" id="landingSettingsButton">Settings</a></li>
+							<li><a class="dropdown-item" href="#">Help</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="container-fluid">
+<?php include "landing-settings.php"; ?>
+
+<div class="container-fluid" id="landing-main">
 	<div class="row">
 		<div class="col-3">
 			<div class="wrapper">
@@ -105,15 +118,21 @@ if($_SESSION['u_typen']==1){
 		<div class="col-6" style="border:1px outset violet;">
 			<div class="tab-content">
 			<!-- add landing-*.php on whatever tab you're editing-->
-			<?php include "landing-home.php"; include "landing-edit.php"; include "landing-bookings.php"; include "landing-history.php"; include "landing-payout.php"; include "landing-progress.php"; include "landing-upload.php";include "landing-courses.php";?>
+			<?php include "landing-home.php"; 
+			include "landing-edit.php"; 
+			include "landing-bookings.php"; 
+			include "landing-history.php"; 
+			include "landing-payout.php"; 
+			include "landing-progress.php"; 
+			include "landing-upload.php";
+			include "landing-courses.php";
+			?>
 			</div>
 		</div>
 		<div class="col-3" style="border:1px outset blue;">
 			
 		</div>
-		
 	</div>
-	
 </div>
 
 

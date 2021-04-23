@@ -120,6 +120,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
+        
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script src="<?php echo $eskwela_home; ?>/includes/jquery.password-validation.js"></script>
 
@@ -205,7 +206,9 @@ $(document).ready(function(){
         }
     })//BUTTON2
     $("#next-2").click(function(e){
+        
         e.preventDefault();
+        
         $("#firstNameError").html('');
         $("#lastNameError").html('');
         $("#dobDayError").html('');
@@ -277,6 +280,21 @@ $(document).ready(function(){
         }
         
     })
+    
+    $("#editbutton").click(function(e){
+        $("#landing-main").hide(500);
+        $("#landing-settings").show(500);
+        
+    })
+    $("#landingSettingsButton").click(function(e){
+        $("#landing-main").hide(500);
+        $("#landing-settings").show(500);
+        
+    })
+    $("#lsbutton").click(function(e){
+        $("#landing-settings").hide(500);
+        $("#landing-main").show(500);
+    })
     $("#landingHomeButton").click(function(e){
         e.preventDefault();
         $(".sel").removeClass("active");
@@ -317,11 +335,65 @@ $(document).ready(function(){
         $(".sel").removeClass("active");
         $("#landingUploadDiv").addClass("active");
     })
-    
 
-   
+    $("#landingSettings1button").click(function(e){
+        e.preventDefault();
+        $(".landing-settings-div").removeClass("active");
+        $("#landingSettings1").addClass("active");
+    })
+    $("#landingSettings2button").click(function(e){
+        e.preventDefault();
+        $(".landing-settings-div").removeClass("active");
+        $("#landingSettings2").addClass("active");
+    })
+    $("#landingSettings3button").click(function(e){
+        e.preventDefault();
+        $(".landing-settings-div").removeClass("active");
+        $("#landingSettings3").addClass("active");
+    })
     
 })  
+</script>
+
+<script>
+$(document).ready(function(){
+    $("#settings-chpwd-submit").click(function(){
+        if(!($("#settings-pwd").val()=='' || $("#settings-pwd2").val()=='')){
+            $("#settings-pwd").passwordValidation({"confirmField": "#settings-pwd2"}, function(element, valid, match, failedCases){
+                if(valid && match){
+                    var password = $("#settings-pwd").val().trim();
+                    var password2 = $("#settings-pwd2").val().trim();
+                    $.ajax({
+                        url:'<?php echo $eskwela_home; ?>/includes/chpwd.php',
+                        type:'post',
+                        data:{password:password,password2:password2},
+                        success:function(response){
+                            var msg = "";
+                            if(response == 2){
+                                window.location = "<?php echo $eskwela_home; ?>/landing/portal.php";
+                            }else if(response==1){
+                                msg = "password mismatch - php";
+                            }
+                            else if(response==3){
+                                msg = "success - php";
+                            }
+                            $("#settings-errMsgTxt").html(msg);
+                        }
+                    });}else if(!valid || !match){
+                        $("#settings-errMsgTxt").html("complete the password requirement");
+                }
+            });
+        }else{
+            $("#settings-errMsgTxt").html("empty fields!");
+        }
+    });
+});
+</script>
+<script>
+    $("#next-2").click(function(e){
+        e.preventDefault();
+
+    })
 </script>
 <script>
 //PASSWORD VALIDATION
@@ -331,6 +403,13 @@ $("#pwd").passwordValidation({"confirmField": "#pwd2"}, function(element, valid,
     if(!valid) $(element).css("border","2px solid red");
     if(valid && match) $("#pwd2").css("border","2px solid green");
     if(!valid || !match) $("#pwd2").css("border","2px solid red");
+});
+$("#settings-pwd").passwordValidation({"confirmField": "#settings-pwd2"}, function(element, valid, match, failedCases) {
+    $("#settings-pwdError").html("<pre>" + failedCases.join("\n") + "</pre>");
+    if(valid) $(element).css("border","2px solid green");
+    if(!valid) $(element).css("border","2px solid red");
+    if(valid && match) $("#settings-pwd2").css("border","2px solid green");
+    if(!valid || !match) $("#settings-pwd2").css("border","2px solid red");
 });
 </script>
 <script>

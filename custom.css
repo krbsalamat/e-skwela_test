@@ -116,4 +116,15 @@
 .sidenav a:hover {
     color: #f1f1f1;
   }
+
+#landing-settings{
+    display:none;
+    height:600px;
+}
+#landing-settings-middlecontent{
+    height:600px;
+    border: 1px outset black;
+}
+
+
   
