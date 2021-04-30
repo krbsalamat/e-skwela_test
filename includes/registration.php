@@ -27,13 +27,16 @@ if(isset($_POST['submit'])){
         $pwdHash = password_hash($pwd, PASSWORD_BCRYPT);
         $uid = hexdec(uniqid());
         echo $uid;
+        $is_default = 1;
 
         if(empty($stuEmail)){
             $sql = "INSERT INTO teachers (t_id, t_firstname, t_lastname, t_dobd, t_dobm, t_doby, t_region, t_email, t_password, t_username) VALUES ('$uid', '$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$teaEmail', '$pwdHash', '$username')";
+            $setpic = "INSERT INTO teaprofile (t_id, id, is_default) VALUES ('$uid', '$uid','$is_default')";
             $usertype = 1;
             
         }else if (empty($teaEmail)){
             $sql = "INSERT INTO students (s_id, s_firstname, s_lastname, s_dobd, s_dobm, s_doby, s_region, s_email, s_password, s_username) VALUES ('$uid', '$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$stuEmail', '$pwdHash', '$username')";
+            $setpic = "INSERT INTO stuprofile (s_id, id, is_default) VALUES ('$uid', '$uid','$is_default')";
             $usertype = 2;
         }
         
@@ -43,7 +46,9 @@ if(isset($_POST['submit'])){
         $table = array("", "teachers", "students");
         $tors = array("", "t_username", "s_username");
         $sql2 = "SELECT * FROM " . $table[$usertype] . " WHERE " . $tors[$usertype] . " ='" .$username. "'";
+        $res1 = mysqli_query($dbCon,$setpic);
         $res2 = mysqli_query($dbCon,$sql2);
+       
         
         if($row = mysqli_fetch_assoc($res2)){
             if(empty($stuEmail)){
