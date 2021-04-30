@@ -354,7 +354,25 @@ $(document).ready(function(){
     
 })  
 </script>
-
+<script>
+    $(document).ready(function(){
+        
+        $("#chdpsubmit").click(function(e){
+            e.preventDefault();
+            var formData = new FormData();
+            formData.append('profilepicfile', $('#profilepicfile')[0].files[0]);
+                $.ajax({
+                    url:'<?php echo $eskwela_home; ?>/includes/uploaddp.php',
+                    type:'post',
+                    data:formData,
+                    contentType: false,
+                    processData: false,
+                    success:function(response){
+                    }
+                });
+        })
+    })
+</script>
 <script>
 $(document).ready(function(){
     $("#settings-chpwd-submit").click(function(){

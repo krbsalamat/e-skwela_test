@@ -22,8 +22,25 @@
 				<div class="col-sm-9" style="border:1px outset black;">
                     <div class="tab-content">
                         <div class="tab-pane landing-settings-div active" id="landingSettings1">
-                            <form>
+                            <form id="editDp">
                             <h3>Edit profile</h3>
+                            <div class="row">
+                                <div class="col-3 mb-2">
+                                    <img src="<?php echo $eskwela_home; ?>/images/profilepic1.jpg" alt="" id="profilePicEdit" >
+                                </div>
+                                <div class="col-3">
+                                    <form action="POST" enctype="multipart/form-data" id="submitprofilepic" name="submitprofilepic">
+                                        <input type="file" class="form-control-file" name="profilepicfile" id="profilepicfile" accept="image/*">
+                                    </form>
+                                </div>
+                                <div class="col-3">
+                                    <img src="<?php echo $eskwela_home; ?>/images/profilepic1.jpg" alt="" id="profilePicEdit" >
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" name="chdpsubmit" id="chdpsubmit" class="btn btn-outline-primary">Change profile picture</button>
+                                </div>
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-6">
                                     <label for="landingProfileFname" class="form-label">First Name</label>

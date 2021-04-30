@@ -1,6 +1,9 @@
 
 <!-- MIDDLE CONTENT -->
 <div class="tab-pane sel active" id="landingProfileDiv">
+
+
+
 <p>First Name: <?php echo $row[$torsv[$utype].'firstname']; ?></p>
 
 
@@ -14,6 +17,8 @@
 
 
 <p>Password hash: <?php echo $row[$torsv[$utype].'password']; ?></p>
+
+<p>UID: <?php echo $row[$torsv[$utype].'id']; ?></p>
 
 <button type="button" class="btn btn-primary mt-5" name="editbutton" id="editbutton">temp button for home</button>
 

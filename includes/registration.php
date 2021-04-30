@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-
+error_reporting(E_ALL); 
+ini_set('display_errors', 'on');
 if(isset($_POST['submit'])){
 	include ('../config.php');
 	include ('../db_connection.php');
@@ -24,20 +25,26 @@ if(isset($_POST['submit'])){
         header("Location: ../registration/?reg=1");
     }else{
         $pwdHash = password_hash($pwd, PASSWORD_BCRYPT);
+        $uid = hexdec(uniqid());
+        echo $uid;
+
         if(empty($stuEmail)){
-            $sql = "INSERT INTO teachers (t_firstname, t_lastname, t_dobd, t_dobm, t_doby, t_region, t_email, t_password, t_username) VALUES ('$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$teaEmail', '$pwdHash', '$username')";
+            $sql = "INSERT INTO teachers (t_id, t_firstname, t_lastname, t_dobd, t_dobm, t_doby, t_region, t_email, t_password, t_username) VALUES ('$uid', '$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$teaEmail', '$pwdHash', '$username')";
             $usertype = 1;
             
         }else if (empty($teaEmail)){
-            $sql = "INSERT INTO students (s_firstname, s_lastname, s_dobd, s_dobm, s_doby, s_region, s_email, s_password, s_username) VALUES ('$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$stuEmail', '$pwdHash', '$username')";
+            $sql = "INSERT INTO students (s_id, s_firstname, s_lastname, s_dobd, s_dobm, s_doby, s_region, s_email, s_password, s_username) VALUES ('$uid', '$fName', '$lName', '$dobD', '$dobM', '$dobY', '$region', '$stuEmail', '$pwdHash', '$username')";
             $usertype = 2;
         }
+        
+        echo mysqli_errno($dbCon);
         
         $insertValues = mysqli_query($dbCon, $sql);
         $table = array("", "teachers", "students");
         $tors = array("", "t_username", "s_username");
         $sql2 = "SELECT * FROM " . $table[$usertype] . " WHERE " . $tors[$usertype] . " ='" .$username. "'";
         $res2 = mysqli_query($dbCon,$sql2);
+        
         if($row = mysqli_fetch_assoc($res2)){
             if(empty($stuEmail)){
                 $_SESSION['u_id'] = $row['t_id'];
@@ -57,9 +64,6 @@ if(isset($_POST['submit'])){
                 header("Location: ../landing/");
             }
         }else{
-            echo "gago mali";
-            echo $table[$usertype];
-            echo $tors[$usertype];
         }
     }
 } else {
