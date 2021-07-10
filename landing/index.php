@@ -2,6 +2,7 @@
 include "../partials/header.php";
 error_reporting(E_ALL &~ E_NOTICE);
 session_start();
+ini_set('display_errors', '1');
 
 
 $url1 = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], 'landing/') );
@@ -40,14 +41,36 @@ if ($row = mysqli_fetch_assoc($res)){
 //2=student 1=teacher
 if($_SESSION['u_typen']==1){
 	$utype = 1;
+	$torsdb = "stuprofile";
+	$torsid = "s_id";
+	
 }else if($_SESSION['u_typen']==2){
 	$utype = 2;
+	$torsdb = "teaprofile";
+	$torsid = "t_id";
+	
 }
 ?> 
 <div class="container-fluid h-100" id="landingHeader">
 	<div class="row">
 		<div class="col-lg-3 col-sm-12 my-4" id="picture">
-			<img src="<?php echo $eskwela_home; ?>/images/profilepic1.jpg" alt="" id="profilePic">
+			<img src="<?php 
+			$chkpc = "SELECT * from ".$torsdb." WHERE ".$torsid."=".$_SESSION['u_id']."";
+			$chkpcsql = mysqli_query($dbCon, $chkpc);
+			echo $eskwela_home;
+			if($chkpcrow = mysqli_fetch_assoc($chkpcsql)){
+				$profileid = $chkpcrow['id'];
+				if($chkpcrow['is_default']==1){
+					echo "/images/profilepic1.jpg";
+				}else{
+					echo "/uploads/pics/";
+					echo $profileid;
+					echo ".jpg";
+				}
+			}else{
+				echo $chkpc;
+			}
+			?>" alt="" id="profilePic">
 		</div>
 		<div class="col-lg-6 col-sm-12 my-4" style="border:1px outset red">
 			<div class="row">

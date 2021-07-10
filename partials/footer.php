@@ -368,6 +368,7 @@ $(document).ready(function(){
                     contentType: false,
                     processData: false,
                     success:function(response){
+                        window.location.reload();
                     }
                 });
         })

@@ -26,7 +26,21 @@
                             <h3>Edit profile</h3>
                             <div class="row">
                                 <div class="col-3 mb-2">
-                                    <img src="<?php echo $eskwela_home; ?>/images/profilepic1.jpg" alt="" id="profilePicEdit" >
+                                    <img src="<?php echo $eskwela_home;
+                                        $chkpc = "SELECT * from ".$torsdb." WHERE ".$torsid."=".$_SESSION['u_id']."";
+                                        $chkpcsql = mysqli_query($dbCon, $chkpc);
+                                        if($chkpcrow = mysqli_fetch_assoc($chkpcsql)){
+                                            $profileid = $chkpcrow['id'];
+                                            if($chkpcrow['is_default']==1){
+                                                echo "/images/profilepic1.jpg";
+                                            }else{
+                                                echo "/uploads/pics/";
+                                                echo $profileid;
+                                                echo ".jpg";
+                                            }
+                                        }else{
+                                            echo $chkpc;
+                                        }?>" alt="" id="profilePicEdit" >
                                 </div>
                                 <div class="col-3">
                                     <form action="POST" enctype="multipart/form-data" id="submitprofilepic" name="submitprofilepic">
@@ -34,7 +48,7 @@
                                     </form>
                                 </div>
                                 <div class="col-3">
-                                    <img src="<?php echo $eskwela_home; ?>/images/profilepic1.jpg" alt="" id="profilePicEdit" >
+                                    
                                 </div>
                                 <div class="col-3">
                                     <button type="button" name="chdpsubmit" id="chdpsubmit" class="btn btn-outline-primary">Change profile picture</button>
