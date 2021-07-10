@@ -47,33 +47,28 @@
 					</ul>
 					<div class="tab-content">
 						<div id="step-1" class="tab-pane active" role="tabpanel">
-							<h3>Register to E-skwela as: </h3>
+							<h3>Register to E-skwela as </h3>
 							<ul class="nav nav-pills">
 								<li>
-									<a href="#studentTab" class="nav-link active" id="stu" data-toggle="pill"> Student
-									</a>
+									<a href="#studentTab" class="nav-link active" id="stu" data-toggle="pill"> Learner </a>
 								</li>
 								<li>
-									<a href="#teacherTab" class="nav-link" id="tea" data-toggle="pill"> Teacher </a>
+									<a href="#teacherTab" class="nav-link" id="tea" data-toggle="pill"> E-ducator </a>
 								</li>
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="studentTab" role="tabpanel">
 									<div class="container mt-2 form-group">
 										<div class="row col-sm-12">
-											<h5>student login form </h5>
-											<a href="#" class="twitter btn">
-												<i class="fa fa-twitter fa-fw"></i> Login with Twitter
-											</a>
-											<a href="#" class="google btn">
-												<i class="fa fa-google fa-fw"></i> Login with Google+
-											</a>
-										</div>
-										<div class="row">
-											<a href="#emailRegStu" class="google btn nav-link" id="emailButtonStu"
-												data-toggle="pill">
-												<i class="fa fa-envelope fa-fw"></i> Login with Email
-											</a>
+												<a href="#" class="twitter btn login-with">
+													<i class="fa fa-twitter fa-fw"></i> Log in using Twitter
+												</a>
+												<a href="#" class="google btn login-with">
+													<i class="fa fa-google fa-fw"></i> Log in using Google+
+												</a>
+												<a href="#" class="google btn nav-link login-with" id="emailButtonStu">
+													<i class="fa fa-envelope fa-fw"></i> Log in using Email
+												</a>
 										</div>
 										<div class="tab-content">
 											<div class="tab-pane" id="emailRegStu" role="tabpanel">
@@ -85,31 +80,28 @@
 													<div class="col-9 ">
 														<input type="text" class="form-control" name="stuEmail"
 															id="stuEmail">
-														<input type="number" name="usertypes" id="usertypes" value="2"
+														<input type="number" name="usertypet" id="usertypet" value="1"
 															hidden>
 														<b class="form-text text-danger" id="stuEmailError"></b>
 													</div>
 												</div>
+												<b class="form-text text-danger" id="emailError"></b>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane" id="teacherTab" role="tabpanel">
-									<div class="container mt-2">
-										<div class="row">
-											<h5>teacher login form </h5>
-											<a href="#" class="twitter btn">
-												<i class="fa fa-twitter fa-fw"></i> Login with Twitter
-											</a>
-											<a href="#" class="google btn">
-												<i class="fa fa-google fa-fw"></i> Login with Google+
-											</a>
-										</div>
-										<div class="row">
-											<a href="#emailRegTea" class="google btn nav-link" id="emailButtonTea"
-												data-toggle="pill">
-												<i class="fa fa-envelope fa-fw"></i> Login with Email
-											</a>
+									<div class="container mt-2 form-group">
+									 <div class="row col-sm-12">
+												<a href="#" class="twitter btn login-with">
+													<i class="fa fa-twitter fa-fw"></i> Log in using Twitter
+												</a>
+												<a href="#" class="google btn login-with">
+													<i class="fa fa-google fa-fw"></i> Log in using Google+
+												</a>
+												<a href="#" class="google btn nav-link login-with" id="emailButtonTea">
+													<i class="fa fa-envelope fa-fw"></i> Log in using Email
+												</a>
 										</div>
 										<div class="tab-content">
 											<div class="tab-pane" id="emailRegTea" role="tabpanel">
@@ -134,7 +126,7 @@
 							</div>
 							<div class="row mt-3">
 								<button type="button" class="btn btn-outline-primary col-sm-3" id="next-1">
-									Next</button>
+									<span>Next</span></button>
 							</div>
 						</div>
 						<div id="step-2" class="tab-pane" role="tabpanel">
@@ -214,7 +206,7 @@
 										<option value="Region VII">Region VII</option>
 										<option value="Region VIII">Region VIII</option>
 										<option value="Region IX">Region IX</option>
-										<option value="Region X">Region X</option>
+										<option value="Region X">Region X</op
 										<option value="Region XI">Region XI</option>
 										<option value="Region XII">Region XII</option>
 										<option value="CARAGA">CARAGA</option>
@@ -398,4 +390,4 @@
 </div>
 
 
-<?php include "../partials/footer.php"?>
+<?php include "../partials/footer.php"?>a
